@@ -11,7 +11,6 @@ class Receipt extends Model
     protected $fillable = [
         'nomComplet',
         'paymentType',
-        'chequeDetails',
         'amount',
         'dossierNumber',
         'date',
