@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: /backend/Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - phpmyadmin
+    networks:
+      - mynetwork  # Nom du réseau
+
+  mysql:
+    image: mysql:latest
+    environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        MYSQL_DATABASE: receipt_db
+    ports:
+        - "3306:3306"
+    volumes:
+        - mysql_data:/var/lib/mysql
+    networks:
+      - mynetwork  # Nom du réseau
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+    networks:
+      - mynetwork  # Nom du réseau
+
+volumes:
+  mysql_data:
+
+networks:
+  mynetwork:  # Définition du réseau
