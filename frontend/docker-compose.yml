@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Frontend React Application
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: receipt-app-frontend
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+    restart: unless-stopped
+    networks:
+      - receipt-network
+
+  # Note: Your Laravel backend should be configured separately
+  # Uncomment and configure the following if you want to include the backend:
+  #
+  # backend:
+  #   build:
+  #     context: ./backend  # Path to your Laravel project
+  #     dockerfile: Dockerfile
+  #   container_name: receipt-app-backend
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - APP_ENV=local
+  #     - APP_DEBUG=true
+  #     - DB_CONNECTION=mysql
+  #     - DB_HOST=db
+  #     - DB_PORT=3306
+  #     - DB_DATABASE=receipts
+  #     - DB_USERNAME=root
+  #     - DB_PASSWORD=secret
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - receipt-network
+  #
+  # db:
+  #   image: mysql:8.0
+  #   container_name: receipt-app-db
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=secret
+  #     - MYSQL_DATABASE=receipts
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   ports:
+  #     - "3306:3306"
+  #   networks:
+  #     - receipt-network
+
+networks:
+  receipt-network:
+    driver: bridge
+
+# volumes:
+#   mysql_data:
