@@ -109,13 +109,13 @@ const Login = () => {
             </Stack>
           </form>
 
-          <Box mt="lg" p="md" className="rounded-lg bg-gray-50 border border-gray-200">
+          {/* <Box mt="lg" p="md" className="rounded-lg bg-gray-50 border border-gray-200">
             <Text size="xs" c="dimmed" ta="center">
               <span className="font-medium">Compte démo:</span><br />
               Utilisateur: <code className="bg-white px-1.5 py-0.5 rounded text-gray-700">admin</code><br />
               Mot de passe: <code className="bg-white px-1.5 py-0.5 rounded text-gray-700">admin123</code>
             </Text>
-          </Box>
+          </Box> */}
         </Paper>
       </Container>
     </div>

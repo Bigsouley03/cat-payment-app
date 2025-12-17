@@ -19,109 +19,18 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
 
     const printWindow = window.open('', '_blank');
     if (!printWindow) return;
+    
+  // Copie tous les <style> et <link rel="stylesheet">
+  const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+    .map((node) => node.outerHTML)
+    .join('');
 
     printWindow.document.write(`
       <!DOCTYPE html>
       <html>
         <head>
-          <title>Reçu de Paiement</title>
-          <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { 
-              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-              padding: 20mm;
-              color: #1a1a2e;
-            }
-            .receipt {
-              max-width: 210mm;
-              margin: 0 auto;
-              border: 2px solid #e0e0e0;
-              border-radius: 8px;
-              overflow: hidden;
-            }
-            .header {
-              background: linear-gradient(135deg, #1565c0, #0d47a1);
-              color: white;
-              padding: 24px;
-              text-align: center;
-            }
-            .header h1 { font-size: 24px; margin-bottom: 8px; }
-            .header p { font-size: 14px; opacity: 0.9; }
-            .receipt-number {
-              background: #f5f5f5;
-              padding: 12px 24px;
-              text-align: right;
-              font-size: 14px;
-              border-bottom: 1px solid #e0e0e0;
-            }
-            .content { padding: 24px; }
-            .info-grid {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 16px;
-              margin-bottom: 24px;
-            }
-            .info-item {
-              padding: 12px;
-              background: #fafafa;
-              border-radius: 6px;
-            }
-            .info-item label {
-              display: block;
-              font-size: 11px;
-              color: #666;
-              text-transform: uppercase;
-              letter-spacing: 0.5px;
-              margin-bottom: 4px;
-            }
-            .info-item span {
-              font-size: 15px;
-              font-weight: 500;
-            }
-            .amount-box {
-              background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-              padding: 20px;
-              border-radius: 8px;
-              text-align: center;
-              margin: 24px 0;
-            }
-            .amount-box label {
-              display: block;
-              font-size: 12px;
-              color: #2e7d32;
-              margin-bottom: 8px;
-            }
-            .amount-box .amount {
-              font-size: 32px;
-              font-weight: 700;
-              color: #1b5e20;
-            }
-            .footer {
-              border-top: 1px solid #e0e0e0;
-              padding: 16px 24px;
-              display: flex;
-              justify-content: space-between;
-              font-size: 12px;
-              color: #666;
-            }
-            .signature {
-              margin-top: 40px;
-              padding-top: 16px;
-              border-top: 1px dashed #ccc;
-              text-align: right;
-            }
-            .signature-line {
-              width: 200px;
-              border-bottom: 1px solid #333;
-              margin-left: auto;
-              margin-bottom: 8px;
-              height: 40px;
-            }
-            @media print {
-              body { padding: 0; }
-              .receipt { border: none; }
-            }
-          </style>
+          <title>Reçu de Paiement</title> 
+          ${styles}       
         </head>
         <body>
           ${printContent.innerHTML}

@@ -110,14 +110,13 @@ CREATE TABLE `receipts` (
   `paymentReason` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `chequeDetails` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `receipts`
 --
 
-INSERT INTO `receipts` (`id`, `nomComplet`, `paymentType`, `date`, `dossierNumber`, `amount`, `phoneNumber`, `classe`, `paymentReason`, `created_at`, `updated_at`, `chequeDetails`) VALUES
+INSERT INTO `receipts` (`id`, `nomComplet`, `paymentType`, `date`, `dossierNumber`, `amount`, `phoneNumber`, `classe`, `paymentReason`, `created_at`, `updated_at`) VALUES
 (1, 'mohamed junior cherif', 'Espèce', '2023-08-21', '23-24 CYB01', '400000', '-', 'L1', 'INS', '2024-01-10 20:20:53', '2024-01-10 20:20:53', NULL),
 (2, 'abdallah ndiaye', 'Espèce', '2023-09-19', 'CAT/373/1458', '795000', '-', 'L2', 'INS+TEN+3M', '2024-01-10 20:22:16', '2024-01-10 20:22:16', NULL),
 (3, 'abdoul kader madior fall', 'Espèce', '2023-09-22', '23-24 CYB02', '575000', '-', 'L1', 'INS+1M+1TEN', '2024-01-10 20:27:16', '2024-01-10 20:27:16', NULL),

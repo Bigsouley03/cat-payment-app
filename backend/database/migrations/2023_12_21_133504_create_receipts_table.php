@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('nomComplet');
             $table->string('paymentType');
-            $table->string('chequeDetails');
             $table->date('date');
             $table->string('dossierNumber');
             $table->string('amount');
