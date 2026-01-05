@@ -97,9 +97,9 @@ const ReceiptsTable = ({ receipts, isLoading, onRefresh }: ReceiptsTableProps) =
   });
 
   const formatAmount = (amount: number) => {
-    return new Intl.NumberFormat('fr-MA', {
+    return new Intl.NumberFormat('fr-FR', {
       style: 'currency',
-      currency: 'MAD',
+      currency: 'XOF',
     }).format(amount);
   };
 
@@ -278,7 +278,9 @@ const ReceiptsTable = ({ receipts, isLoading, onRefresh }: ReceiptsTableProps) =
               <Group gap="xs">
                 <Text size="sm" c="dimmed">Total:</Text>
                 <Text size="lg" fw={700} c="green">
-                  {formatAmount(filteredReceipts.reduce((sum, r) => sum + r.amount, 0))}
+                  {formatAmount(
+                    filteredReceipts.reduce((sum, r) => sum + Number(r.amount || 0), 0)
+                  )}
                 </Text>
               </Group>
             </Group>

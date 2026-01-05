@@ -8,7 +8,7 @@ interface StatsCardsProps {
 
 const StatsCards = ({ receipts }: StatsCardsProps) => {
   const totalReceipts = receipts.length;
-  const totalAmount = receipts.reduce((sum, r) => sum + r.amount, 0);
+  const totalAmount = receipts.reduce((sum, r) => sum + Number(r.amount || 0), 0);
   const uniqueStudents = new Set(receipts.map((r) => r.nomComplet)).size;
   
   const currentMonth = new Date().getMonth();
@@ -20,9 +20,9 @@ const StatsCards = ({ receipts }: StatsCardsProps) => {
   const thisMonthAmount = thisMonthReceipts.reduce((sum, r) => sum + r.amount, 0);
 
   const formatAmount = (amount: number) => {
-    return new Intl.NumberFormat('fr-MA', {
+    return new Intl.NumberFormat('fr-FR', {
       style: 'currency',
-      currency: 'MAD',
+      currency: 'XOF',
       minimumFractionDigits: 0,
     }).format(amount);
   };

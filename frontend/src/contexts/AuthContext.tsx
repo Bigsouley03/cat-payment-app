@@ -20,14 +20,11 @@ const DEMO_CREDENTIALS = {
 };
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem('receipt_app_user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+const [user, setUser] = useState<User | null>(() => {
+  const storedUser = localStorage.getItem('receipt_app_user');
+  return storedUser ? JSON.parse(storedUser) : null;
+});
 
   const login = async (username: string, password: string): Promise<boolean> => {
     // Simulate API call delay

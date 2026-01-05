@@ -85,16 +85,16 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
       <div ref={printRef}>
         <Paper withBorder radius="md" className="overflow-hidden">
           {/* Header */}
-          <Box className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 text-center">
+          <Box className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-6 text-center">
             <Text size="xl" fw={700} mb={4}>REÇU DE PAIEMENT</Text>
             <Text size="sm" opacity={0.9}>École Exemple - Établissement Scolaire</Text>
           </Box>
 
           {/* Receipt Number */}
           <Box className="bg-gray-100 px-6 py-3 text-right text-sm border-b border-gray-200">
-            <Text span c="dimmed">N° Reçu: </Text>
+            {/* <Text span c="dimmed">N° Reçu: </Text>
             <Text span fw={600}>{receipt.id || 'NOUVEAU'}</Text>
-            <Text span c="dimmed" mx="md">|</Text>
+            <Text span c="dimmed" mx="md">|</Text> */}
             <Text span c="dimmed">Date: </Text>
             <Text span fw={600}>{formatDate(receipt.date)}</Text>
           </Box>
@@ -164,12 +164,12 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
               </Box>
             </Box>
           </Box>
-
+          
           {/* Footer */}
           <Divider />
           <Group justify="space-between" p="md" className="text-xs text-gray-500">
             <Text size="xs">Document généré le {format(new Date(), 'dd/MM/yyyy à HH:mm', { locale: fr })}</Text>
-            <Text size="xs">RecuPro - Système de Gestion</Text>
+            <Text size="xs">CAT - Système de Gestion</Text>
           </Group>
         </Paper>
       </div>

@@ -1,7 +1,7 @@
 export interface Receipt {
   id?: number;
   nomComplet: string;
-  paymentType: 'cash' | 'cheque' | 'virement';
+  paymentType: 'cash' | 'cheque' | 'virement' | 'mobile_money';
   chequeDetails?: string;
   amount: number;
   dossierNumber: string;
@@ -21,21 +21,22 @@ export interface ReceiptFilters {
   dateTo: string;
 }
 
-export type PaymentType = 'cash' | 'cheque' | 'virement';
+export type PaymentType = 'cash' | 'cheque' | 'virement' | 'mobile_money';
 
 export const PAYMENT_TYPES: { value: PaymentType; label: string }[] = [
   { value: 'cash', label: 'Espèces' },
   { value: 'cheque', label: 'Chèque' },
   { value: 'virement', label: 'Virement' },
+  { value: 'mobile_money', label: 'Mobile Money' },
 ];
 
 export const CLASSES = [
-  '1ère Année',
-  '2ème Année',
-  '3ème Année',
-  '4ème Année',
-  '5ème Année',
-  '6ème Année',
+  'Licence 1',
+  'Licence 2',
+  'Licence 3',
+  'Master 1',
+  'Master 2',
+  'Spécialisation',
 ];
 
 export const PAYMENT_REASONS = [
