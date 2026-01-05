@@ -1,25 +1,40 @@
-FROM php:8.2-fpm
+# Use the official PHP image as the base image
+FROM php:8.2-apache
 
-# Install system dependencies
+# Install dependencies for Composer
 RUN apt-get update && apt-get install -y \
     git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install PHP extensions
-RUN docker-php-ext-install gettext intl pdo_mysql gd
+# Set the working directory to /var/www/html
+WORKDIR /var/www/html
 
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Install PDO MySQL extension
+RUN docker-php-ext-install pdo_mysql
 
+# Copy composer files and install dependencies
+COPY composer.json composer.lock ./
+RUN composer install --no-scripts --no-autoloader
 
-# Set working directory
-WORKDIR /var/www
+# Copy the rest of the application code
+COPY . .
 
+# Ensure storage and bootstrap/cache directories exist
+# RUN mkdir -p storage bootstrap/cache \
+#     && chown -R www-data:www-data storage bootstrap/cache \
+#     && chmod -R 775 storage bootstrap/cache
+
+# Enable Apache modules and set the document root
+RUN a2enmod rewrite
+RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+# Install additional PHP extensions if needed
+
+# Expose port 80
+EXPOSE 80
+
+# Start the Apache server
+CMD ["apache2-foreground"]
