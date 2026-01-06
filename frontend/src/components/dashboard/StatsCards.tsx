@@ -17,15 +17,19 @@ const StatsCards = ({ receipts }: StatsCardsProps) => {
     const receiptDate = new Date(r.date);
     return receiptDate.getMonth() === currentMonth && receiptDate.getFullYear() === currentYear;
   });
-  const thisMonthAmount = thisMonthReceipts.reduce((sum, r) => sum + r.amount, 0);
+const thisMonthAmount = thisMonthReceipts
+  .reduce((sum, r) => sum + Number(r.amount), 0);
 
-  const formatAmount = (amount: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'XOF',
-      minimumFractionDigits: 0,
-    }).format(amount);
-  };
+const formatAmount = (amount: number) => {
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'XOF',
+    currencyDisplay: 'code',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
+
 
   const stats = [
     {

@@ -59,7 +59,7 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
   const formatAmount = (amount: number) => {
     return new Intl.NumberFormat('fr-MA', {
       style: 'currency',
-      currency: 'MAD',
+      currency: 'XOF',
     }).format(amount);
   };
 
@@ -169,7 +169,7 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
           <Divider />
           <Group justify="space-between" p="md" className="text-xs text-gray-500">
             <Text size="xs">Document généré le {format(new Date(), 'dd/MM/yyyy à HH:mm', { locale: fr })}</Text>
-            <Text size="xs">CAT - Système de Gestion</Text>
+            <Text size="xs">CAT - Système de Comptabilité</Text>
           </Group>
         </Paper>
       </div>
