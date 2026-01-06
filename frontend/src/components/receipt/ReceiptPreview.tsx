@@ -87,7 +87,7 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
           {/* Header */}
           <Box className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-6 text-center">
             <Text size="xl" fw={700} mb={4}>REÇU DE PAIEMENT</Text>
-            <Text size="sm" opacity={0.9}>École Exemple - Établissement Scolaire</Text>
+            <Text size="sm" opacity={0.9}>Colombe Academy Technology</Text>
           </Box>
 
           {/* Receipt Number */}

@@ -21,6 +21,10 @@ services:
       DB_DATABASE: receipt_db
       DB_USERNAME: root
       DB_PASSWORD: ""
+    command: >
+      sh -c "sleep 10 &&
+            php artisan migrate --force &&
+            apache2-foreground"
     networks:
       - receipt-network
 
