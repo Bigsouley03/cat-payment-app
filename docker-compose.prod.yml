@@ -62,8 +62,8 @@ services:
     container_name: receipt-app-frontend
     ports:
       - "3000:80"
-    environment:
-      - VITE_API_URL=http://172.16.4.23:8000/api # <- Important : utiliser le nom du service backend
+    # environment:
+    #   - VITE_API_URL=http://172.16.4.23:8000/api # <- Important : utiliser le nom du service backend
     restart: unless-stopped
     networks:
       - receipt-network
