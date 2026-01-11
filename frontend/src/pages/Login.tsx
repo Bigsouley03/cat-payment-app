@@ -11,7 +11,8 @@ import {
   Container,
   Stack,
   Alert,
-  Box
+  Box,
+  Group
 } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { Receipt, Lock, User, AlertCircle } from 'lucide-react';
@@ -58,9 +59,20 @@ const Login = () => {
       <Container size={420} className="relative z-10">
         <Paper radius="lg" p="xl" withBorder shadow="xl" className="bg-white/95 backdrop-blur-sm">
           <Stack align="center" mb="lg">
+            {/* Logo de l'école */}
+            <div className="mb-4">
+              <img 
+                src="/cat-logo.png" 
+                alt="Logo de l'école" 
+                className="w-24 h-24 object-contain"
+              />
+            </div>
+            
+            {/* Logo de l'application
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
               <Receipt className="w-8 h-8 text-white" />
-            </div>
+            </div> */}
+            
             <div className="text-center">
               <Title order={2} className="text-gray-800">Gestion des Reçus</Title>
               <Text c="dimmed" size="sm" mt={4}>

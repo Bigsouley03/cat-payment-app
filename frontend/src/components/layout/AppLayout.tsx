@@ -59,6 +59,11 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <img 
+                  src="/cat-logo.png" 
+                  alt="Logo de l'école" 
+                  className="w-24 h-24 object-contain"
+                />
                 <Receipt className="w-5 h-5 text-white" />
               </div>
               <div className="hidden sm:block">

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Receipt, PAYMENT_TYPES } from '@/types/receipt';
-import { Modal, Button, Group, Text, Paper, Grid, Box, Divider } from '@mantine/core';
+import { Modal, Button, Group, Text, Paper, Grid, Box, Divider, Image } from '@mantine/core';
 import { X, Printer } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -84,10 +84,21 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
 
       <div ref={printRef}>
         <Paper withBorder radius="md" className="overflow-hidden">
-          {/* Header */}
-          <Box className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-6 text-center">
-            <Text size="xl" fw={700} mb={4}>REÇU DE PAIEMENT</Text>
-            <Text size="sm" opacity={0.9}>Colombe Academy Technology</Text>
+          {/* Header avec logo */}
+          <Box className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-6">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-white rounded-full p-2 mr-4 flex items-center justify-center">
+                <img 
+                  src="/cat-logo.png" 
+                  alt="Logo Colombe Academy" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <Text size="xl" fw={700} mb={4}>REÇU DE PAIEMENT</Text>
+                <Text size="sm" opacity={0.9}>Colombe Academy Technology</Text>
+              </div>
+            </div>
           </Box>
 
           {/* Receipt Number */}
@@ -156,12 +167,28 @@ const ReceiptPreview = ({ receipt, onClose }: ReceiptPreviewProps) => {
               </Text>
             </Paper>
 
-            {/* Signature */}
-            <Box mt="xl" pt="md" className="border-t border-dashed border-gray-300 text-right">
-              <Box className="w-48 ml-auto">
-                <Box className="h-10 border-b border-gray-800 mb-2" />
-                <Text size="sm" c="dimmed">Signature & Cachet</Text>
-              </Box>
+            {/* Signature avec logo */}
+            <Box mt="xl" pt="md" className="border-t border-dashed border-gray-300">
+              <div className="flex justify-between items-end">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 mr-3">
+                    <img 
+                      src="/cat-logo.png" 
+                      alt="Logo" 
+                      className="w-full h-full object-contain opacity-70"
+                    />
+                  </div>
+                  <div>
+                    <Text size="sm" c="dimmed">Colombe Academy Technology</Text>
+                    <Text size="xs" c="dimmed">Système de Comptabilité</Text>
+                  </div>
+                </div>
+                
+                <Box className="w-48 text-right">
+                  <Box className="h-10 border-b border-gray-800 mb-2" />
+                  <Text size="sm" c="dimmed">Signature & Cachet</Text>
+                </Box>
+              </div>
             </Box>
           </Box>
           
