@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: ./backend
-      dockerfile: 1.Dockerfile
+      dockerfile: Dockerfile
     container_name: receipt-app-backend
     ports:
       - "8000:80"
