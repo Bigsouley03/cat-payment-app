@@ -1,6 +1,6 @@
 import { Receipt } from '@/types/receipt';
 
-const API_BASE_URL = 'http://172.16.4.23:8000/api';
+const API_BASE_URL = 'http://localhost:8000/api';
 
 class ApiService {
   private async request<T>(endpoint: string, options?: RequestInit): Promise<T> {
